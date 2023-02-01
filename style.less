@@ -1,0 +1,376 @@
+// IMPORT DES FONTS
+@import url('https://fonts.googleapis.com/css?family=Merriweather:900&display=swap');
+
+// DECLARATION DES VARIABLES dans root
+:root {
+    --color-primary: #101118;
+    --color-secondary: #F0F7EE;
+    --color-navigation: #BE9F16;
+    --color-gray: #8B8B8B;
+    --duration: 4s;
+    --nav-duration: calc(var(--duration) / 4);
+    --ease: cubic-bezier(0.215, 0.61, 0.355, 1);
+    --space: 1rem;
+    --font-primary: 'Helvetica', sans-serif;
+    --font-heading: 'Merriweather', serif;
+    --font-size: 1.125rem;
+    --line-height: 1.5;
+}
+
+body {
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+    font-family: var(--font-primary);
+    margin: 0;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-secondary);
+}
+
+// NAVIGATION
+nav {
+    position: fixed;
+    z-index: 11;
+    background-color: var(--color-navigation);
+
+    width: 100vw;
+    height: 100vh;
+
+    margin-left: -100vw;
+    transition: all 1.3s ease;
+
+    &>#crossLeave {
+        display: none;
+        position: absolute;
+        right: 0;
+        margin-top: 1.7rem;
+        margin-right: 0.5rem;
+        z-index: 10;
+        cursor: pointer;
+
+        width: 3vw;
+        height: 2vw;
+
+        // transition: all 0.6s ease;
+        transform: scale(1.8);
+        transition: all 0.7s ease;
+
+        // animation :hover
+        &:hover::before,
+        &:hover::after {
+            background-color: var(--color-primary);
+            transition: all 0.7s ease;
+        }
+
+        &::before,
+        &::after {
+            background-color: var(--color-secondary);
+            position: absolute;
+            left: 15px;
+            height: 35px;
+            content: ' ';
+
+            width: 4px;
+            border-radius: 10px;
+        }
+
+        &::after {
+            transform: rotate(-45deg);
+        }
+
+        &::before {
+            transform: rotate(45deg);
+        }
+    }
+
+    &>#navigation {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        width: 100vw;
+        height: 100vh;
+        font-family: var(--font-heading);
+        color: var(--color-secondary);
+
+        &>.lineSlider {
+            background-color: var(--color-secondary);
+            height: 0.4rem;
+        }
+
+        &>.titleNav {
+            align-self: center;
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            height: 0;
+            overflow: hidden;
+
+            cursor: pointer;
+        }
+
+        &>.titleNavShow {
+            height: 90px;
+
+            transition: all 0.8s ease;
+        }
+
+        &>#lineSlider-1 {
+            width: 230%;
+            margin-left: -230%;
+        }
+
+        &>#lineSlider-2 {
+            width: 330%;
+            margin-left: -330%;
+        }
+
+        &>#lineSlider-3 {
+            width: 430%;
+            margin-left: -430%;
+        }
+
+        &>#lineSlider-4 {
+            width: 530%;
+            margin-left: -530%;
+        }
+
+        &>#lineSlider-5 {
+            width: 630%;
+            margin-left: -630%;
+        }
+    }
+}
+
+// Afficher le menu de navigation
+nav.showMenu {
+    margin-left: 0;
+    overflow: hidden;
+}
+
+// BARRE NAVIGATION
+
+#navigationGlob {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    z-index: 10;
+    width: 100%;
+    height: 13vh;
+    background-color: var(--color-primary);
+    font-family: var(--font-heading);
+    color: var(--color-secondary);
+    border-bottom: 1px solid #FFFFFF;
+    padding-left: 5rem;
+
+    &>#pierr {
+        font-size: 2rem;
+        cursor: pointer;
+        text-shadow:
+            -1px 1px 0px var(--color-navigation),
+            -2px 2px 0px var(--color-navigation),
+            -3px 3px 0px var(--color-navigation),
+            -4px 4px 0px var(--color-navigation),
+            -5px 5px 0px var(--color-navigation),
+            -6px 6px 0px var(--color-navigation);
+    }
+}
+
+// BARRE NAVIGATION
+
+// BOUTON Menu (3traits)
+div#buttonMenu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: fixed;
+    right: 5rem;
+    z-index: 10;
+    cursor: pointer;
+
+    width: 3rem;
+    height: 3rem;
+    transform: rotate(180deg);
+
+    background: #0A192F;
+    border: 1px solid #FFFFFF;
+    border-radius: 10px;
+    // box-shadow: 6px -6px 0px #FFFFFF;
+
+    &>div {
+        background-color: var(--color-navigation);
+        height: 11%;
+        width: 65%;
+        margin-top: 6%;
+        margin-bottom: 6%;
+        border-radius: 10px;
+        border: 1px solid #FFFFFF;
+
+        transition: all 1.3s ease;
+    }
+}
+
+// Loader animation 
+.loader {
+    display: flex;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--color-primary);
+    z-index: 999999;
+}
+
+.bar {
+    width: 14px;
+    height: 100px;
+    margin-inline: 2px;
+    border-radius: 100px;
+    animation: loader 1.3s linear infinite;
+}
+
+.bar1 {
+    animation-delay: 0.1s;
+}
+
+.bar2 {
+    animation-delay: 0.2s;
+}
+
+.bar3 {
+    animation-delay: 0.3s;
+}
+
+.bar4 {
+    animation-delay: 0.4s;
+}
+
+.bar5 {
+    animation-delay: 0.5s;
+}
+
+.bar6 {
+    animation-delay: 0.6s;
+}
+
+.bar7 {
+    animation-delay: 0.7s;
+}
+
+.bar8 {
+    animation-delay: 0.8s;
+}
+
+@keyframes loader {
+    0% {
+        transform: scaleY(0.1);
+        background: transparent;
+    }
+
+    50% {
+        transform: scaleY(1);
+        background: var(--color-navigation);
+    }
+
+    100% {
+        transform: scaleY(0.1);
+        background: transparent;
+    }
+}
+
+// ===================== MAIN CONTENT =====================
+
+#jobActuel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    background-image: url(assets/img/banner-job.png);
+    background-position: bottom center;
+    background-size: cover;
+
+    min-height: 270px;
+
+    &>h1 {
+        font-size: 2.4rem;
+        font-weight: 800;
+    }
+
+    &>p {
+        font-size: 1.2rem;
+        font-weight: 600;
+
+        &>a {
+            color: var(--color-gray);
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            position: relative;
+
+            &:hover {
+                color: var(--color-navigation);
+            }
+
+            &::after {
+                content: '';
+                position: absolute;
+                width: 100%;
+                transform: scaleX(0);
+                height: 2px;
+                bottom: 0;
+                left: 0;
+                background-color: var(--color-gray);
+                transform-origin: bottom right;
+                transition: transform 0.25s ease-out;
+            }
+
+            &:hover::after {
+                transform: scaleX(1);
+                transform-origin: bottom left;
+            }
+        }
+    }
+}
+
+#firstScreen {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    background-color: var(--color-primary);
+    width: 100vw;
+    height: 100vh;
+
+    background-image: url(assets/img/masthead.jpg);
+
+    min-height: 100vh;
+
+
+    &>div {
+        margin-left: 20vw;
+
+        &>h1 {
+            font-size: 2.4rem;
+            font-weight: 800;
+        }
+
+        &>div {
+            font-size: 1.2rem;
+            font-weight: 600;
+
+            &>span {
+                font-size: 2.5rem;
+                // transition: all 0.2s ease;
+            }
+        }
+    }
+}
