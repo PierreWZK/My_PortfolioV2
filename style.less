@@ -152,7 +152,7 @@ nav.showMenu {
 
 // BARRE NAVIGATION
 
-#navigationGlob {
+div#navigationGlob {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -166,16 +166,19 @@ nav.showMenu {
     border-bottom: 1px solid #FFFFFF;
     padding-left: 5rem;
 
-    &>#pierr {
+    &>div#pierr {
         font-size: 2rem;
         cursor: pointer;
-        text-shadow:
-            -1px 1px 0px var(--color-navigation),
-            -2px 2px 0px var(--color-navigation),
-            -3px 3px 0px var(--color-navigation),
-            -4px 4px 0px var(--color-navigation),
-            -5px 5px 0px var(--color-navigation),
-            -6px 6px 0px var(--color-navigation);
+
+        &>a {
+            transition: all 0.5s ease;
+        }
+
+        :hover {
+            text-shadow: 0 0 5px var(--color-navigation),
+                0 0 25px var(--color-navigation),
+                0 0 50px var(--color-navigation);
+        }
     }
 }
 
@@ -199,7 +202,6 @@ div#buttonMenu {
     background: #0A192F;
     border: 1px solid #FFFFFF;
     border-radius: 10px;
-    box-shadow: 6px -6px 0px #FFFFFF;
 
     &>div {
         background-color: var(--color-navigation);
@@ -212,6 +214,7 @@ div#buttonMenu {
 
         transition: all 1.3s ease;
     }
+
 }
 
 // Loader animation 
@@ -225,7 +228,7 @@ div#buttonMenu {
     align-items: center;
 
     background-color: var(--color-primary);
-    z-index: 999999;
+    z-index: 99999999;
 }
 
 .bar {
@@ -336,40 +339,6 @@ div#buttonMenu {
             &:hover::after {
                 transform: scaleX(1);
                 transform-origin: bottom left;
-            }
-        }
-    }
-}
-
-#firstScreen {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-
-    background-color: var(--color-primary);
-    width: 100vw;
-    height: 100vh;
-
-    background-image: url(assets/img/masthead.jpg);
-
-    min-height: 100vh;
-
-
-    &>div {
-        margin-left: 20vw;
-
-        &>h1 {
-            font-size: 2.4rem;
-            font-weight: 800;
-        }
-
-        &>div {
-            font-size: 1.2rem;
-            font-weight: 600;
-
-            &>span {
-                font-size: 2.5rem;
-                // transition: all 0.2s ease;
             }
         }
     }

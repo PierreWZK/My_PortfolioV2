@@ -1,6 +1,6 @@
-// DECLARATION DE TOUTES LES VARIABLES
+// ========== DECLARATION DE TOUTES LES VARIABLES ==========
 
-// DOCUMENTS READY
+// ========== DOCUMENTS READY ==========
 $(document).ready(function() {
     setTimeout(() => {
         // afficherTextor(); // ANCIEN portfolio
@@ -19,19 +19,22 @@ $(document).ready(function() {
 
 // ========== Fonction dans le content ==========
 
-function afficherTextor() {
+//* ANCIEN TypeWriter
+// function afficherTextor() {
 
-    new Typewriter($('#textor')[0], {
-        loop: true
-    })
-    .typeString('Je m\'appelle <span class="textorName">Pierre</span> !')
-    .pauseFor(500)
-    .deleteAll()
-    .typeString('Je suis <span class="textorName">Développeur Web</span> !')
-    .pauseFor(500)
-    .deleteAll()
-    .typeString('Je recherche une <span class="textorName">alternance</span> !')
-    .pauseFor(500)
-    .deleteAll()
-    .start();
-}
+//     new Typewriter($('#textor')[0], {
+//         loop: true
+//     })
+//     .typeString('Je m\'appelle <span class="textorName">Pierre</span> !')
+//     .pauseFor(500)
+//     .deleteAll()
+//     .typeString('Je suis <span class="textorName">Développeur Web</span> !')
+//     .pauseFor(500)
+//     .deleteAll()
+//     .typeString('Je recherche une <span class="textorName">alternance</span> !')
+//     .pauseFor(500)
+//     .deleteAll()
+//     .start();
+// }
+//* ANCIEN TypeWriter
+
