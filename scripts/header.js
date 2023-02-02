@@ -13,6 +13,7 @@ $(document).ready(function() {
 
     $('#buttonMenu').click(function() {
         if (possibleToShowNavs) { // si on a cliqué sur les 3 barres
+            showNav(possibleToShowNavs);
             $('#middleButtonMenu').hide()
             $('#middleButtonMenu').css('height', '0')
 
@@ -31,6 +32,7 @@ $(document).ready(function() {
                 possibleToShowNavs = false;
             }, 500);
         } else { // si on a cliqué sur la croix
+            showNav(possibleToShowNavs);
             // bottomButtonMenu
             $('#bottomButtonMenu').css('transform', 'rotate(0)')
             $('#bottomButtonMenu').css('margin-top', '6%')
@@ -269,4 +271,19 @@ function afficherBarreLinks() {
     text += '</div>';
     text += '<!-- Barre email by Pierr inspired to brittanychiang.com -->';
     $("body").prepend(text);
+}
+
+function showNav(showNav) {
+    console.log(showNav)
+    switch (showNav) {
+        case true:
+            
+            break;
+        case false:
+        
+            break;
+        default:
+            break;
+    }
+    
 }

@@ -6,6 +6,7 @@
 :root {
     --color-primary: #101118;
     --color-secondary: #F0F7EE;
+    --color-third: #0A192F;
     --color-navigation: #BE9F16;
     --color-gray: #8B8B8B;
     --duration: 4s;
@@ -14,8 +15,11 @@
     --space: 1rem;
     --font-primary: 'Helvetica', sans-serif;
     --font-heading: 'Merriweather', serif;
+    --font-Montserrat: 'Montserrat', sans-serif;
     --font-size: 1.125rem;
     --line-height: 1.5;
+    --height-nav: 13vh;
+    --height-navigateur: 87vh;
 }
 
 body {
@@ -32,6 +36,42 @@ a {
 }
 
 // NAVIGATION
+nav#navigation {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    height: var(--height-navigateur);
+    padding-top: var(--height-nav);
+    background-color: var(--color-third);
+    font-family: var(--font-Montserrat);
+
+    &>div {
+        display: flex;
+        flex-direction: column;
+        margin-right: 10%;
+    }
+
+    &>div>div {
+        cursor: pointer;
+        font-size: 4rem;
+        margin-top: 10%;
+        margin-bottom: 10%;
+    }
+    
+    &>div:first-child {
+        margin-right: 0;
+        margin-left: 10%;
+    }
+    &>div>div>a>span.numberBeforeNav {
+        font-size: 1.3rem;
+        color: var(--color-navigation);
+    }
+}
+
+// ANCIENNE NAV
 // nav {
 //     position: fixed;
 //     z-index: 11;
@@ -144,6 +184,8 @@ a {
 //         }
 //     }
 // }
+// ANCIENNE NAV
+// NAVIGATION
 
 // Afficher le menu de navigation
 nav.showMenu {
@@ -160,7 +202,7 @@ div#navigationGlob {
     position: fixed;
     z-index: 10;
     width: 100%;
-    height: 13vh;
+    height: var(--height-nav);
     background-color: var(--color-primary);
     font-family: var(--font-heading);
     color: var(--color-secondary);
@@ -170,6 +212,7 @@ div#navigationGlob {
     &>div#pierr {
         font-size: 2rem;
         cursor: pointer;
+        font-family: var(--font-Montserrat);
 
         &>a {
             transition: all 0.5s ease;
@@ -207,17 +250,21 @@ div#linksNavFixed {
 
         margin-top: 0.5rem;
     }
+
     &>div.linker {
         display: flex;
         justify-content: center;
+
         &>a>svg {
             max-width: 1.6rem;
         }
+
         &:hover {
             cursor: pointer;
         }
     }
 }
+
 // Barre links 
 
 // Barre email 
@@ -225,7 +272,7 @@ div#mailNavFixed {
     display: flex;
     flex-direction: column;
     align-items: center;
-    
+
     position: fixed;
     z-index: 10; // meme niveau que la barre de navigation
 
@@ -235,7 +282,7 @@ div#mailNavFixed {
     margin-right: 2rem;
     right: 0;
     margin-top: 13vh;
-    
+
     &>div.line {
         height: 5rem;
         width: 1px;
@@ -243,17 +290,21 @@ div#mailNavFixed {
 
         margin-bottom: 0.5rem;
     }
+
     &>div.mail {
         display: flex;
         align-items: center;
+        font-family: var(--font-Montserrat);
 
         writing-mode: vertical-rl;
         letter-spacing: 0.3rem;
+
         &:hover {
             cursor: pointer;
         }
     }
 }
+
 // Barre email 
 
 // BOUTON Menu (3traits)
@@ -271,7 +322,7 @@ div#buttonMenu {
     height: 3rem;
     transform: rotate(180deg);
 
-    background: #0A192F;
+    background: var(--color-third);
     border: 1px solid #FFFFFF;
     border-radius: 10px;
     transition: all 0.5s ease;
@@ -358,61 +409,5 @@ div#buttonMenu {
     100% {
         transform: scaleY(0.1);
         background: transparent;
-    }
-}
-
-// ===================== MAIN CONTENT =====================
-
-#jobActuel {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-
-    background-image: url(assets/img/banner-job.png);
-    background-position: bottom center;
-    background-size: cover;
-
-    min-height: 270px;
-
-    &>h1 {
-        font-size: 2.4rem;
-        font-weight: 800;
-    }
-
-    &>p {
-        font-size: 1.2rem;
-        font-weight: 600;
-
-        &>a {
-            color: var(--color-gray);
-            text-decoration: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: inline-block;
-            position: relative;
-
-            &:hover {
-                color: var(--color-navigation);
-            }
-
-            &::after {
-                content: '';
-                position: absolute;
-                width: 100%;
-                transform: scaleX(0);
-                height: 2px;
-                bottom: 0;
-                left: 0;
-                background-color: var(--color-gray);
-                transform-origin: bottom right;
-                transition: transform 0.25s ease-out;
-            }
-
-            &:hover::after {
-                transform: scaleX(1);
-                transform-origin: bottom left;
-            }
-        }
     }
 }
