@@ -31,118 +31,118 @@ a {
 }
 
 // NAVIGATION
-nav {
-    position: fixed;
-    z-index: 11;
-    background-color: var(--color-navigation);
+// nav {
+//     position: fixed;
+//     z-index: 11;
+//     background-color: var(--color-navigation);
 
-    width: 100vw;
-    height: 100vh;
+//     width: 100vw;
+//     height: 100vh;
 
-    margin-left: -100vw;
-    transition: all 1.3s ease;
+//     margin-left: -100vw;
+//     transition: all 1.3s ease;
 
-    &>#crossLeave {
-        display: none;
-        position: absolute;
-        right: 0;
-        margin-top: 1.7rem;
-        margin-right: 0.5rem;
-        z-index: 10;
-        cursor: pointer;
+//     &>#crossLeave {
+//         display: none;
+//         position: absolute;
+//         right: 0;
+//         margin-top: 1.7rem;
+//         margin-right: 0.5rem;
+//         z-index: 10;
+//         cursor: pointer;
 
-        width: 3vw;
-        height: 2vw;
+//         width: 3vw;
+//         height: 2vw;
 
-        // transition: all 0.6s ease;
-        transform: scale(1.8);
-        transition: all 0.7s ease;
+//         // transition: all 0.6s ease;
+//         transform: scale(1.8);
+//         transition: all 0.7s ease;
 
-        // animation :hover
-        &:hover::before,
-        &:hover::after {
-            background-color: var(--color-primary);
-            transition: all 0.7s ease;
-        }
+//         // animation :hover
+//         &:hover::before,
+//         &:hover::after {
+//             background-color: var(--color-primary);
+//             transition: all 0.7s ease;
+//         }
 
-        &::before,
-        &::after {
-            background-color: var(--color-secondary);
-            position: absolute;
-            left: 15px;
-            height: 35px;
-            content: ' ';
+//         &::before,
+//         &::after {
+//             background-color: var(--color-secondary);
+//             position: absolute;
+//             left: 15px;
+//             height: 35px;
+//             content: ' ';
 
-            width: 4px;
-            border-radius: 10px;
-        }
+//             width: 4px;
+//             border-radius: 10px;
+//         }
 
-        &::after {
-            transform: rotate(-45deg);
-        }
+//         &::after {
+//             transform: rotate(-45deg);
+//         }
 
-        &::before {
-            transform: rotate(45deg);
-        }
-    }
+//         &::before {
+//             transform: rotate(45deg);
+//         }
+//     }
 
-    &>#navigation {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+//     &>#navigation {
+//         display: flex;
+//         flex-direction: column;
+//         justify-content: center;
 
-        width: 100vw;
-        height: 100vh;
-        font-family: var(--font-heading);
-        color: var(--color-secondary);
+//         width: 100vw;
+//         height: 100vh;
+//         font-family: var(--font-heading);
+//         color: var(--color-secondary);
 
-        &>.lineSlider {
-            background-color: var(--color-secondary);
-            height: 0.4rem;
-        }
+//         &>.lineSlider {
+//             background-color: var(--color-secondary);
+//             height: 0.4rem;
+//         }
 
-        &>.titleNav {
-            align-self: center;
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            height: 0;
-            overflow: hidden;
+//         &>.titleNav {
+//             align-self: center;
+//             font-size: 4rem;
+//             margin-bottom: 1rem;
+//             height: 0;
+//             overflow: hidden;
 
-            cursor: pointer;
-        }
+//             cursor: pointer;
+//         }
 
-        &>.titleNavShow {
-            height: 90px;
+//         &>.titleNavShow {
+//             height: 90px;
 
-            transition: all 0.8s ease;
-        }
+//             transition: all 0.8s ease;
+//         }
 
-        &>#lineSlider-1 {
-            width: 230%;
-            margin-left: -230%;
-        }
+//         &>#lineSlider-1 {
+//             width: 230%;
+//             margin-left: -230%;
+//         }
 
-        &>#lineSlider-2 {
-            width: 330%;
-            margin-left: -330%;
-        }
+//         &>#lineSlider-2 {
+//             width: 330%;
+//             margin-left: -330%;
+//         }
 
-        &>#lineSlider-3 {
-            width: 430%;
-            margin-left: -430%;
-        }
+//         &>#lineSlider-3 {
+//             width: 430%;
+//             margin-left: -430%;
+//         }
 
-        &>#lineSlider-4 {
-            width: 530%;
-            margin-left: -530%;
-        }
+//         &>#lineSlider-4 {
+//             width: 530%;
+//             margin-left: -530%;
+//         }
 
-        &>#lineSlider-5 {
-            width: 630%;
-            margin-left: -630%;
-        }
-    }
-}
+//         &>#lineSlider-5 {
+//             width: 630%;
+//             margin-left: -630%;
+//         }
+//     }
+// }
 
 // Afficher le menu de navigation
 nav.showMenu {
@@ -184,6 +184,77 @@ div#navigationGlob {
 
 // BARRE NAVIGATION
 
+// Barre links 
+div#linksNavFixed {
+    display: flex;
+    align-items: center;
+    flex-direction: column-reverse;
+
+    position: fixed;
+    z-index: 10; // meme niveau que la barre de navigation
+
+    width: auto;
+    height: auto;
+
+    margin-left: 2rem;
+    bottom: 0;
+
+    &>div.line {
+        height: 5rem;
+        width: 1px;
+        background-color: #FFFFFF;
+
+        margin-top: 0.5rem;
+    }
+    &>div.linker {
+        display: flex;
+        justify-content: center;
+        &>svg {
+            max-width: 1.6rem;
+        }
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+// Barre links 
+
+// Barre email 
+div#mailNavFixed {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    position: fixed;
+    z-index: 10; // meme niveau que la barre de navigation
+
+    width: auto;
+    height: auto;
+
+    margin-right: 2rem;
+    right: 0;
+    margin-top: 13vh;
+    
+    &>div.line {
+        height: 5rem;
+        width: 1px;
+        background-color: #FFFFFF;
+
+        margin-bottom: 0.5rem;
+    }
+    &>div.mail {
+        display: flex;
+        align-items: center;
+
+        writing-mode: vertical-rl;
+        letter-spacing: 0.1rem;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+// Barre email 
+
 // BOUTON Menu (3traits)
 div#buttonMenu {
     display: flex;
@@ -202,6 +273,7 @@ div#buttonMenu {
     background: #0A192F;
     border: 1px solid #FFFFFF;
     border-radius: 10px;
+    transition: all 0.5s ease;
 
     &>div {
         background-color: var(--color-navigation);
@@ -212,7 +284,7 @@ div#buttonMenu {
         border-radius: 10px;
         border: 1px solid #FFFFFF;
 
-        transition: all 1.3s ease;
+        transition: all 0.5s ease;
     }
 
 }

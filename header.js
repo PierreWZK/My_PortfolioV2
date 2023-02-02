@@ -1,5 +1,5 @@
 // DECLARATION DE TOUTES LES VARIABLES
-let possibleToShowNavs = true;
+let possibleToShowNavs = true; // true -> 3 barres | false -> croix
 
 // DOCUMENTS READY
 $(document).ready(function() {
@@ -11,7 +11,44 @@ $(document).ready(function() {
     }, 1100);
 
     $('#buttonMenu').click(function() {
+        if (possibleToShowNavs) { // si on a cliqué sur les 3 barres
+            $('#middleButtonMenu').hide()
+            $('#middleButtonMenu').css('height', '0')
 
+            // bottomButtonMenu
+            $('#bottomButtonMenu').css('transform', 'rotate(-45deg)')
+            $('#bottomButtonMenu').css('margin-top', '')
+            $('#bottomButtonMenu').css('margin-bottom', '')
+            $('#bottomButtonMenu').css('position', 'absolute')
+
+            // topButtonMenu
+            $('#topButtonMenu').css('transform', 'rotate(45deg)')
+            $('#topButtonMenu').css('margin-top', '')
+            $('#topButtonMenu').css('margin-bottom', '')
+            $('#topButtonMenu').css('position', 'absolute')
+            setTimeout(() => {
+                possibleToShowNavs = false;
+            }, 500);
+        } else { // si on a cliqué sur la croix
+            // bottomButtonMenu
+            $('#bottomButtonMenu').css('transform', 'rotate(0)')
+            $('#bottomButtonMenu').css('margin-top', '6%')
+            $('#bottomButtonMenu').css('margin-bottom', '6%')
+            $('#bottomButtonMenu').css('position', '')
+
+            // topButtonMenu
+            $('#topButtonMenu').css('transform', 'rotate(0)')
+            $('#topButtonMenu').css('margin-top', '6%')
+            $('#topButtonMenu').css('margin-bottom', '6%')
+            $('#topButtonMenu').css('position', '')
+            setTimeout(() => {
+                $('#middleButtonMenu').show()
+                $('#middleButtonMenu').css('height', '11%')
+            }, 100);
+            setTimeout(() => {
+                possibleToShowNavs = true;
+            }, 500);
+        }
     }); // afficher la nav
 
 
@@ -162,9 +199,9 @@ function afficherReadyMenu() {
     text += '   <!-- Text Nav by Pierr -->';
     text += '   <!-- Bouton Menu by Pierr -->';
     text += '   <div id="buttonMenu">';
-    text += '       <div></div>';
-    text += '       <div></div>';
-    text += '       <div></div>';
+    text += '       <div id="bottomButtonMenu"></div>';
+    text += '       <div id="middleButtonMenu"></div>';
+    text += '       <div id="topButtonMenu"></div>';
     text += '   </div>';
     text += '   <!-- Bouton Menu by Pierr -->';
     text += '</div>';
