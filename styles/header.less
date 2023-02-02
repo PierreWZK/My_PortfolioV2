@@ -42,11 +42,15 @@ nav#navigation {
     align-items: center;
     flex-direction: row;
     flex-wrap: wrap;
+    
     width: 100%;
-    height: var(--height-navigateur);
+    height: 0;
     padding-top: var(--height-nav);
+
     background-color: var(--color-third);
     font-family: var(--font-Montserrat);
+    overflow: hidden;
+    transition: all 1.2s ease;
 
     &>div {
         display: flex;

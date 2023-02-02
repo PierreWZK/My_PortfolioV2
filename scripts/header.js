@@ -277,10 +277,10 @@ function showNav(showNav) {
     console.log(showNav)
     switch (showNav) {
         case true:
-            
+            $('#navigation').css('height', 'var(--height-navigateur)');
             break;
-        case false:
-        
+            case false:
+                $('#navigation').css('height', '0');
             break;
         default:
             break;
