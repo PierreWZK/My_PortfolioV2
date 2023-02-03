@@ -1,177 +1,44 @@
 // DECLARATION DE TOUTES LES VARIABLES
 let possibleToShowNavs = true; // true -> 3 barres | false -> croix
+let tempsAffichageMenu = 800 // temps d'affichage (de l'animation) du menu
 
 // DOCUMENTS READY
 $(document).ready(function() {
     // afficherReadyLoader(); // afficher le loader // NE MARCHE PAS BIEN
     afficherReadyMenu(); // afficher le bouton menu
-    // afficherReadyNav(); // afficher la nav // ANCIEN
     afficherBarreLinks();
+    lineNavigationURL();
     setTimeout(() => {
         $('.loader').fadeOut(300);
     }, 1100);
 
     $('#buttonMenu').click(function() {
-        if (possibleToShowNavs) { // si on a cliqué sur les 3 barres
-            showNav(possibleToShowNavs);
-            $('#middleButtonMenu').hide()
-            $('#middleButtonMenu').css('height', '0')
-
-            // bottomButtonMenu
-            $('#bottomButtonMenu').css('transform', 'rotate(-45deg)')
-            $('#bottomButtonMenu').css('margin-top', '')
-            $('#bottomButtonMenu').css('margin-bottom', '')
-            $('#bottomButtonMenu').css('position', 'absolute')
-
-            // topButtonMenu
-            $('#topButtonMenu').css('transform', 'rotate(45deg)')
-            $('#topButtonMenu').css('margin-top', '')
-            $('#topButtonMenu').css('margin-bottom', '')
-            $('#topButtonMenu').css('position', 'absolute')
-            setTimeout(() => {
-                possibleToShowNavs = false;
-            }, 500);
-        } else { // si on a cliqué sur la croix
-            showNav(possibleToShowNavs);
-            // bottomButtonMenu
-            $('#bottomButtonMenu').css('transform', 'rotate(0)')
-            $('#bottomButtonMenu').css('margin-top', '6%')
-            $('#bottomButtonMenu').css('margin-bottom', '6%')
-            $('#bottomButtonMenu').css('position', '')
-
-            // topButtonMenu
-            $('#topButtonMenu').css('transform', 'rotate(0)')
-            $('#topButtonMenu').css('margin-top', '6%')
-            $('#topButtonMenu').css('margin-bottom', '6%')
-            $('#topButtonMenu').css('position', '')
-            setTimeout(() => {
-                $('#middleButtonMenu').show()
-                $('#middleButtonMenu').css('height', '11%')
-            }, 100);
-            setTimeout(() => {
-                possibleToShowNavs = true;
-            }, 500);
-        }
+        clickButtonMenu();
     }); // afficher la nav
 
-
-    //! ANCIENNE NAV
-    // $('#buttonMenu').click(function() {
-    //     if (possibleToShowNavs) {
-    //         $('#menuNav').addClass('showMenu')
-    //         $('#crossLeave').fadeIn(800);
-    //         $('#buttonMenu div').css('width', '0vw');
-    //         setTimeout(() => {
-    //             $('.lineSlider').css('transition', 'all 1.5s ease')
-
-    //             //* SLIDER 1
-    //             $('#lineSlider-1').css('margin-left', '100%');
-    //             setTimeout(() => {
-    //                 $('#titleNav-1').addClass('titleNavShow');
-    //             }, 200);
-
-    //             //* SLIDER 2
-    //             setTimeout(() => {
-    //                 $('#lineSlider-2').css('margin-left', '100%');
-    //                 setTimeout(() => {
-    //                     $('#titleNav-2').addClass('titleNavShow');
-    //                 }, 250);
-    //             }, 250);
-
-    //             //* SLIDER 3
-    //             setTimeout(() => {
-    //                 $('#lineSlider-3').css('margin-left', '100%');
-    //                 setTimeout(() => {
-    //                     $('#titleNav-3').addClass('titleNavShow');
-    //                 }, 250);
-    //             }, 500);
-
-    //             //* SLIDER 4
-    //             setTimeout(() => {
-    //                 $('#lineSlider-4').css('margin-left', '100%');
-    //                 setTimeout(() => {
-    //                     $('#titleNav-4').addClass('titleNavShow');
-    //                 }, 250);
-    //             }, 750);
-
-    //             //* SLIDER 5
-    //             setTimeout(() => {
-    //                 $('#lineSlider-5').css('margin-left', '100%');
-    //                 setTimeout(() => {
-    //                     $('#titleNav-5').addClass('titleNavShow');
-    //                 }, 250);
-    //             }, 1000);
-
-
-    //             //! enlever la possibilité de clicker sur la croix (ATTENDRE LA FIN de l'animation)
-    //             setTimeout(() => {
-    //                 possibleToShowNavs = false;
-    //             }, 1500); // prendre 1500 + tout les timeouts des SLIDER 2, SLIDER3, SLIDER 4, ....
-    //         }, 1300);
-    //     }
-    // })
-
-    // $('#crossLeave').click(function() {
-    //     if (!possibleToShowNavs) {
-
-    //         $('#menuNav').removeClass('showMenu')
-    //         $('#crossLeave').fadeOut(600);
-    //         $('#buttonMenu div').css('width', '3vw');
-
-    //         //  RAZ des lineSlider
-    //         $('.lineSlider').css('transition', '')
-    //         $('#lineSlider-1').css('margin-left', '-230%');
-    //         $('#lineSlider-2').css('margin-left', '-330%');
-    //         $('#lineSlider-3').css('margin-left', '-430%');
-    //         $('#lineSlider-4').css('margin-left', '-530%');
-    //         $('#lineSlider-5').css('margin-left', '-630%');
-
-    //         setTimeout(() => {
-    //             // Slider 1
-    //             $('#titleNav-1').removeClass('titleNavShow');
-
-    //             // SLIDER 2
-    //             $('#titleNav-2').removeClass('titleNavShow');
-
-    //             // SLIDER 3
-    //             $('#titleNav-3').removeClass('titleNavShow');
-
-    //             // SLIDER 4
-    //             $('#titleNav-4').removeClass('titleNavShow');
-
-    //             // SLIDER 5
-    //             $('#titleNav-5').removeClass('titleNavShow');
-
-    //             //remettre la posibilité de click sur le navigation
-    //             possibleToShowNavs = true;
-    //         }, 1300);
-    //     }
-    // })
+    // ========== LIEN MENU NAVIGATION ==========
+    $('#accueil').click(function() { // ACCUEIL
+        document.location.href = "/";
+    });
+    $('#about').click(function() {
+        document.location.href = "/about/";
+    });
+    $('#projets').click(function() {
+        document.location.href = "/projets/";
+    });
+    $('#experience').click(function() {
+        document.location.href = "/experience/";
+    });
+    $('#futur').click(function() {
+        document.location.href = "/futur/";
+    });
+    $('#contact').click(function() {
+        document.location.href = "/contact/";
+    });
+    // ========== LIEN MENU NAVIGATION ==========
 });
 
-// ========== Incrementation de la navbar, loader et Bouton du navbar ==========
-function afficherReadyNav() {
-    var text = "";
-    text += '<!-- NavBar by Pierr -->';
-    text += '<nav id="menuNav">';
-    text += '    <div id="crossLeave">';
-    text += '    </div>';
-    text += '    <div id="navigation">';
-    text += '        <div id="titleNav-1" class="titleNav">Accueil</div>';
-    text += '        <div id="lineSlider-1" class="lineSlider"></div>';
-    text += '        <div id="titleNav-2" class="titleNav">Mes Projets</div>';
-    text += '        <div id="lineSlider-2" class="lineSlider"></div>';
-    text += '        <div id="titleNav-3" class="titleNav">Ma Formation</div>';
-    text += '        <div id="lineSlider-3" class="lineSlider"></div>';
-    text += '        <div id="titleNav-4" class="titleNav">Mon Experience</div>';
-    text += '        <div id="lineSlider-4" class="lineSlider"></div>';
-    text += '        <div id="titleNav-5" class="titleNav">Contact</div>';
-    text += '        <div id="lineSlider-5" class="lineSlider"></div>';
-    text += '    </div>';
-    text += '</nav>';
-    text += '<!-- NavBar by Pierr -->';
-    $('body').prepend(text);
-}
+// ========== Incrementation de la navbar, loader et menu de navigation ==========
 
 function afficherReadyLoader() {
     var text = "";
@@ -210,15 +77,6 @@ function afficherReadyMenu() {
     text += '</div>';
     text += '<!-- Navigation Bar by Pierr -->';
     $("body").prepend(text);
-}
-// ========== Incrementation de la navbar, loader et Bouton du navbar ==========
-
-// Pouvoir afficher le loader en fonction
-function afficherLoader() {
-    $('.loader').fadeIn(300);
-    setTimeout(() => {
-        $('.loader').fadeOut(300);
-    }, 1100);
 }
 
 function afficherBarreLinks() {
@@ -273,17 +131,107 @@ function afficherBarreLinks() {
     $("body").prepend(text);
 }
 
+// ========== Incrementation de la navbar, loader et Bouton du navbar ==========
+
+// Pouvoir afficher le loader en fonction
+function afficherLoader() {
+    $('.loader').fadeIn(300);
+    setTimeout(() => {
+        $('.loader').fadeOut(300);
+    }, 1100);
+}
+
 function showNav(showNav) {
-    console.log(showNav)
     switch (showNav) {
         case true:
+            $('body').css('overflow', 'hidden') // BODY OVERFLOW
+
             $('#navigation').css('height', 'var(--height-navigateur)');
+            setTimeout(() => {}, tempsAffichageMenu);
             break;
-            case false:
-                $('#navigation').css('height', '0');
+        case false:
+            console.log($('#middleButtonMenu').is(':visible'))
+            $('body').css('overflow', '') // BODY OVERFLOW
+
+            $('#navigation').css('height', '0');
+            setTimeout(() => {}, tempsAffichageMenu);
+
             break;
         default:
             break;
     }
-    
+
+}
+
+function clickButtonMenu() {
+    if (possibleToShowNavs) { // si on a cliqué sur les 3 barres
+        showNav(possibleToShowNavs);
+        $('#middleButtonMenu').hide()
+        $('#middleButtonMenu').css('height', '0')
+
+        // bottomButtonMenu
+        $('#bottomButtonMenu').css('transform', 'rotate(-45deg)')
+        $('#bottomButtonMenu').css('margin-top', '')
+        $('#bottomButtonMenu').css('margin-bottom', '')
+        $('#bottomButtonMenu').css('position', 'absolute')
+
+        // topButtonMenu
+        $('#topButtonMenu').css('transform', 'rotate(45deg)')
+        $('#topButtonMenu').css('margin-top', '')
+        $('#topButtonMenu').css('margin-bottom', '')
+        $('#topButtonMenu').css('position', 'absolute')
+        setTimeout(() => {
+            possibleToShowNavs = false;
+        }, 100);
+    } else { // si on a cliqué sur la croix
+        showNav(possibleToShowNavs);
+        // bottomButtonMenu
+        $('#bottomButtonMenu').css('transform', 'rotate(0)')
+        $('#bottomButtonMenu').css('margin-top', '6%')
+        $('#bottomButtonMenu').css('margin-bottom', '6%')
+        $('#bottomButtonMenu').css('position', '')
+
+        // topButtonMenu
+        $('#topButtonMenu').css('transform', 'rotate(0)')
+        $('#topButtonMenu').css('margin-top', '6%')
+        $('#topButtonMenu').css('margin-bottom', '6%')
+        $('#topButtonMenu').css('position', '')
+        setTimeout(() => {
+            $('#middleButtonMenu').show()
+            $('#middleButtonMenu').css('height', '11%')
+        }, 100);
+        setTimeout(() => {
+            possibleToShowNavs = true;
+        }, 100);
+    }
+}
+
+function lineNavigationURL() {
+    var url = window.location.href;
+    var urlSplit = url.split('/');
+    console.log(urlSplit);
+
+    switch (urlSplit[3]) {
+        case "about":
+
+            break;
+        case "projets":
+
+            break;
+        case "experience":
+
+            break;
+        case "futur":
+
+            break;
+        case "contact":
+
+            break;
+        case "":
+            $('#accueil').css('pointer-events', 'none');
+            $('#accueil').css('color', '#A3A3A3');
+            break;
+
+    }
+
 }

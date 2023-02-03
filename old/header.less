@@ -1,0 +1,114 @@
+// ANCIENNE NAV
+nav {
+    position: fixed;
+    z-index: 11;
+    background-color: var(--color-navigation);
+
+    width: 100vw;
+    height: 100vh;
+
+    margin-left: -100vw;
+    transition: all 1.3s ease;
+
+    &>#crossLeave {
+        display: none;
+        position: absolute;
+        right: 0;
+        margin-top: 1.7rem;
+        margin-right: 0.5rem;
+        z-index: 10;
+        cursor: pointer;
+
+        width: 3vw;
+        height: 2vw;
+
+        // transition: all 0.6s ease;
+        transform: scale(1.8);
+        transition: all 0.7s ease;
+
+        // animation :hover
+        &:hover::before,
+        &:hover::after {
+            background-color: var(--color-primary);
+            transition: all 0.7s ease;
+        }
+
+        &::before,
+        &::after {
+            background-color: var(--color-secondary);
+            position: absolute;
+            left: 15px;
+            height: 35px;
+            content: ' ';
+
+            width: 4px;
+            border-radius: 10px;
+        }
+
+        &::after {
+            transform: rotate(-45deg);
+        }
+
+        &::before {
+            transform: rotate(45deg);
+        }
+    }
+
+    &>#navigation {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        width: 100vw;
+        height: 100vh;
+        font-family: var(--font-heading);
+        color: var(--color-secondary);
+
+        &>.lineSlider {
+            background-color: var(--color-secondary);
+            height: 0.4rem;
+        }
+
+        &>.titleNav {
+            align-self: center;
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            height: 0;
+            overflow: hidden;
+
+            cursor: pointer;
+        }
+
+        &>.titleNavShow {
+            height: 90px;
+
+            transition: all 0.8s ease;
+        }
+
+        &>#lineSlider-1 {
+            width: 230%;
+            margin-left: -230%;
+        }
+
+        &>#lineSlider-2 {
+            width: 330%;
+            margin-left: -330%;
+        }
+
+        &>#lineSlider-3 {
+            width: 430%;
+            margin-left: -430%;
+        }
+
+        &>#lineSlider-4 {
+            width: 530%;
+            margin-left: -530%;
+        }
+
+        &>#lineSlider-5 {
+            width: 630%;
+            margin-left: -630%;
+        }
+    }
+}
+// ANCIENNE NAV

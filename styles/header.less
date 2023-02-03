@@ -23,16 +23,23 @@
 }
 
 body {
+    overflow-x: hidden;
+    margin: 0;
+
     background-color: var(--color-primary);
     color: var(--color-secondary);
     font-family: var(--font-primary);
-    margin: 0;
-    overflow-x: hidden;
 }
 
 a {
     text-decoration: none;
     color: var(--color-secondary);
+}
+
+main {
+    margin-top: calc(var(--height-nav) + 2vh);
+    margin-left: 8rem;
+    margin-right: 8rem;
 }
 
 // NAVIGATION
@@ -42,15 +49,18 @@ nav#navigation {
     align-items: center;
     flex-direction: row;
     flex-wrap: wrap;
-    
+
+    position: fixed;
+
     width: 100%;
     height: 0;
     padding-top: var(--height-nav);
+    top: 0;
 
     background-color: var(--color-third);
     font-family: var(--font-Montserrat);
     overflow: hidden;
-    transition: all 1.2s ease;
+    transition: all 0.8s ease;
 
     &>div {
         display: flex;
@@ -59,136 +69,57 @@ nav#navigation {
     }
 
     &>div>div {
+        display: flex;
         cursor: pointer;
-        font-size: 4rem;
+        font-size: 3.5rem;
         margin-top: 10%;
         margin-bottom: 10%;
     }
-    
+
     &>div:first-child {
         margin-right: 0;
-        margin-left: 10%;
+        margin-left: 12%;
     }
-    &>div>div>a>span.numberBeforeNav {
+
+    &>div>div>div.numberBeforeNav {
+        display: flex;
+        flex-direction: column-reverse;
+        margin-right: 0.7rem;
+
         font-size: 1.3rem;
         color: var(--color-navigation);
     }
+
+    &>div>div>div.textMenuNav {
+        height: 3.8rem;
+        overflow: hidden;
+        transform: rotate(0deg);
+        transition: all 0.5s ease;
+
+        &>div {
+            transform: rotate(0deg);
+            transition: all 0.5s ease;
+        }
+        &>div:last-child {
+            color: var(--color-navigation);
+        }
+    }
+
+    &>div>div:hover {
+        // &>div.textMenuNav>div {
+        //     transform: translateY(-100%);
+        // }
+        &>div.textMenuNav>div:first-child {
+            transform: translateY(-100%);
+        }
+
+        &>div.textMenuNav>div:last-child {
+            transform: translateY(-100%);
+        }
+    }
+
 }
 
-// ANCIENNE NAV
-// nav {
-//     position: fixed;
-//     z-index: 11;
-//     background-color: var(--color-navigation);
-
-//     width: 100vw;
-//     height: 100vh;
-
-//     margin-left: -100vw;
-//     transition: all 1.3s ease;
-
-//     &>#crossLeave {
-//         display: none;
-//         position: absolute;
-//         right: 0;
-//         margin-top: 1.7rem;
-//         margin-right: 0.5rem;
-//         z-index: 10;
-//         cursor: pointer;
-
-//         width: 3vw;
-//         height: 2vw;
-
-//         // transition: all 0.6s ease;
-//         transform: scale(1.8);
-//         transition: all 0.7s ease;
-
-//         // animation :hover
-//         &:hover::before,
-//         &:hover::after {
-//             background-color: var(--color-primary);
-//             transition: all 0.7s ease;
-//         }
-
-//         &::before,
-//         &::after {
-//             background-color: var(--color-secondary);
-//             position: absolute;
-//             left: 15px;
-//             height: 35px;
-//             content: ' ';
-
-//             width: 4px;
-//             border-radius: 10px;
-//         }
-
-//         &::after {
-//             transform: rotate(-45deg);
-//         }
-
-//         &::before {
-//             transform: rotate(45deg);
-//         }
-//     }
-
-//     &>#navigation {
-//         display: flex;
-//         flex-direction: column;
-//         justify-content: center;
-
-//         width: 100vw;
-//         height: 100vh;
-//         font-family: var(--font-heading);
-//         color: var(--color-secondary);
-
-//         &>.lineSlider {
-//             background-color: var(--color-secondary);
-//             height: 0.4rem;
-//         }
-
-//         &>.titleNav {
-//             align-self: center;
-//             font-size: 4rem;
-//             margin-bottom: 1rem;
-//             height: 0;
-//             overflow: hidden;
-
-//             cursor: pointer;
-//         }
-
-//         &>.titleNavShow {
-//             height: 90px;
-
-//             transition: all 0.8s ease;
-//         }
-
-//         &>#lineSlider-1 {
-//             width: 230%;
-//             margin-left: -230%;
-//         }
-
-//         &>#lineSlider-2 {
-//             width: 330%;
-//             margin-left: -330%;
-//         }
-
-//         &>#lineSlider-3 {
-//             width: 430%;
-//             margin-left: -430%;
-//         }
-
-//         &>#lineSlider-4 {
-//             width: 530%;
-//             margin-left: -530%;
-//         }
-
-//         &>#lineSlider-5 {
-//             width: 630%;
-//             margin-left: -630%;
-//         }
-//     }
-// }
-// ANCIENNE NAV
 // NAVIGATION
 
 // Afficher le menu de navigation
@@ -203,15 +134,18 @@ div#navigationGlob {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     position: fixed;
     z-index: 10;
     width: 100%;
     height: var(--height-nav);
+    padding-left: 5rem;
+    top: 0;
+
     background-color: var(--color-primary);
     font-family: var(--font-heading);
     color: var(--color-secondary);
     border-bottom: 1px solid #FFFFFF;
-    padding-left: 5rem;
 
     &>div#pierr {
         font-size: 2rem;
@@ -285,6 +219,7 @@ div#mailNavFixed {
 
     margin-right: 2rem;
     right: 0;
+    top: 0;
     margin-top: 13vh;
 
     &>div.line {
@@ -347,10 +282,12 @@ div#buttonMenu {
 
 // Loader animation 
 .loader {
+    position: fixed;
     display: flex;
     position: fixed;
     width: 100%;
     height: 100%;
+    top: 0;
 
     justify-content: center;
     align-items: center;
@@ -415,3 +352,5 @@ div#buttonMenu {
         background: transparent;
     }
 }
+
+// Loader animation
