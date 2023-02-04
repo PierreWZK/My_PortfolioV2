@@ -3,36 +3,37 @@ let possibleToShowNavs = true; // true -> 3 barres | false -> croix
 let tempsAffichageMenu = 800 // temps d'affichage (de l'animation) du menu
 
 // DOCUMENTS READY
-$(document).ready(function() {
+$(document).ready(function () {
     // afficherReadyLoader(); // afficher le loader // NE MARCHE PAS BIEN
     afficherReadyMenu(); // afficher le bouton menu
     afficherBarreLinks();
+    afficherNavigation();
     lineNavigationURL();
     setTimeout(() => {
         $('.loader').fadeOut(300);
     }, 1100);
 
-    $('#buttonMenu').click(function() {
+    $('#buttonMenu').click(function () {
         clickButtonMenu();
     }); // afficher la nav
 
     // ========== LIEN MENU NAVIGATION ==========
-    $('#accueil').click(function() { // ACCUEIL
+    $('#accueil').click(function () { // ACCUEIL
         document.location.href = "/";
     });
-    $('#about').click(function() {
+    $('#about').click(function () {
         document.location.href = "/about/";
     });
-    $('#projets').click(function() {
+    $('#projets').click(function () {
         document.location.href = "/projets/";
     });
-    $('#experience').click(function() {
+    $('#experience').click(function () {
         document.location.href = "/experience/";
     });
-    $('#futur').click(function() {
+    $('#futur').click(function () {
         document.location.href = "/futur/";
     });
-    $('#contact').click(function() {
+    $('#contact').click(function () {
         document.location.href = "/contact/";
     });
     // ========== LIEN MENU NAVIGATION ==========
@@ -131,6 +132,62 @@ function afficherBarreLinks() {
     $("body").prepend(text);
 }
 
+function afficherNavigation() {
+    var text = "";
+
+    text += '<!-- NAVIGATION V2 by Pierr -->';
+    text += '<nav id="navigation">';
+    text += '    <div id="firstColumn">';
+    text += '        <div id="accueil">';
+    text += '            <div class="numberBeforeNav">1.</div>';
+    text += '            <div class="textMenuNav">';
+    text += '                <div>Accueil</div>';
+    text += '                <div>Accueil</div>';
+    text += '            </div>';
+    text += '        </div>';
+    text += '        <div id="about">';
+    text += '            <div class="numberBeforeNav">2.</div>';
+    text += '            <div class="textMenuNav"> ';
+    text += '                <div>À Propos</div>';
+    text += '                <div>À Propos</div>';
+    text += '            </div>';
+    text += '        </div>';
+    text += '        <div id="projets">';
+    text += '            <div class="numberBeforeNav">3.</div>';
+    text += '            <div class="textMenuNav">';
+    text += '                <div>Projets</div>';
+    text += '                <div>Projets</div>';
+    text += '            </div>';
+    text += '        </div>';
+    text += '    </div>';
+    text += '    <div id="secondColumn">';
+    text += '        <div id="experience">';
+    text += '            <div class="numberBeforeNav">4.</div>';
+    text += '            <div class="textMenuNav">';
+    text += '                <div>Experience</div>';
+    text += '                <div>Experience</div>';
+    text += '            </div>';
+    text += '        </div>';
+    text += '        <div id="futur">';
+    text += '            <div class="numberBeforeNav">5.</div>';
+    text += '            <div class="textMenuNav">';
+    text += '                <div>Mon Futur</div>';
+    text += '                <div>Mon Futur</div>';
+    text += '            </div>';
+    text += '        </div>';
+    text += '        <div id="contact">';
+    text += '            <div class="numberBeforeNav">6.</div>';
+    text += '            <div class="textMenuNav">';
+    text += '                <div>Contact</div>';
+    text += '                <div>Contact</div>';
+    text += '            </div>';
+    text += '        </div>';
+    text += '    </div>';
+    text += '</nav>';
+    text += '<!-- NAVIGATION V2 by Pierr -->';
+    $("body").prepend(text);
+}
+
 // ========== Incrementation de la navbar, loader et Bouton du navbar ==========
 
 // Pouvoir afficher le loader en fonction
@@ -139,28 +196,6 @@ function afficherLoader() {
     setTimeout(() => {
         $('.loader').fadeOut(300);
     }, 1100);
-}
-
-function showNav(showNav) {
-    switch (showNav) {
-        case true:
-            $('body').css('overflow', 'hidden') // BODY OVERFLOW
-
-            $('#navigation').css('height', 'var(--height-navigateur)');
-            setTimeout(() => {}, tempsAffichageMenu);
-            break;
-        case false:
-            console.log($('#middleButtonMenu').is(':visible'))
-            $('body').css('overflow', '') // BODY OVERFLOW
-
-            $('#navigation').css('height', '0');
-            setTimeout(() => {}, tempsAffichageMenu);
-
-            break;
-        default:
-            break;
-    }
-
 }
 
 function clickButtonMenu() {
@@ -206,32 +241,112 @@ function clickButtonMenu() {
     }
 }
 
+function showNav(showNav) {
+    let tempsCacherMenu = 800;
+    switch (showNav) {
+        case false:
+            // On caches les liens avant de cacher la navigation
+            showOrHideLinkNav(false);
+
+            setTimeout(() => {
+                // Affichage de la navigation
+                $('body').css('overflow', '') // BODY OVERFLOW
+                $('#navigation').css('height', '0');
+            }, tempsCacherMenu);
+            break;
+        case true:
+            // Affichage de la navigation
+            $('body').css('overflow', 'hidden') // BODY OVERFLOW
+            $('#navigation').css('height', 'var(--height-navigateur)');
+
+            // Affichage des liens après l'affichage de la navigation 
+            setTimeout(() => {
+                // Affichage des liens
+                showOrHideLinkNav(true);
+            }, tempsAffichageMenu);
+            break;
+        default:
+            break;
+    }
+
+}
+
 function lineNavigationURL() {
     var url = window.location.href;
     var urlSplit = url.split('/');
-    console.log(urlSplit);
 
     switch (urlSplit[3]) {
         case "about":
-
+            $('#about').css('pointer-events', 'none');
+            $('#about').css('color', '#A3A3A3');
             break;
         case "projets":
-
+            $('#projets').css('pointer-events', 'none');
+            $('#projets').css('color', '#A3A3A3');
             break;
         case "experience":
-
+            $('#experience').css('pointer-events', 'none');
+            $('#experience').css('color', '#A3A3A3');
             break;
         case "futur":
-
+            $('#futur').css('pointer-events', 'none');
+            $('#futur').css('color', '#A3A3A3');
             break;
         case "contact":
-
+            $('#contact').css('pointer-events', 'none');
+            $('#contact').css('color', '#A3A3A3');
             break;
         case "":
             $('#accueil').css('pointer-events', 'none');
             $('#accueil').css('color', '#A3A3A3');
             break;
-
     }
 
+}
+
+function showOrHideLinkNav(val) {
+    switch (val) {
+        case true: // Affichage
+            setTimeout(() => {
+                !$('#middleButtonMenu').is(':visible') ? $('#accueil div.numberBeforeNav, #accueil div.textMenuNav').css('transform', 'translateY(0%)') : 0;
+                setTimeout(() => {
+                    !$('#middleButtonMenu').is(':visible') ? $('#about div.numberBeforeNav, #about div.textMenuNav').css('transform', 'translateY(0%)') : 0;
+                    setTimeout(() => {
+                        !$('#middleButtonMenu').is(':visible') ? $('#projets div.numberBeforeNav, #projets div.textMenuNav').css('transform', 'translateY(0%)') : 0;
+                        setTimeout(() => {
+                            !$('#middleButtonMenu').is(':visible') ? $('#experience div.numberBeforeNav, #experience div.textMenuNav').css('transform', 'translateY(0%)') : 0;
+                            setTimeout(() => {
+                                !$('#middleButtonMenu').is(':visible') ? $('#futur div.numberBeforeNav, #futur div.textMenuNav').css('transform', 'translateY(0%)') : 0;
+                                setTimeout(() => {
+                                    !$('#middleButtonMenu').is(':visible') ? $('#contact div.numberBeforeNav, #contact div.textMenuNav').css('transform', 'translateY(0%)') : 0;
+                                }, 100);
+                            }, 100);
+                        }, 100);
+                    }, 100);
+                }, 100);
+            }, 101);
+            break;
+        case false: // Cacher
+            setTimeout(() => {
+                $('#middleButtonMenu').is(':visible') ? $('#contact div.numberBeforeNav, #contact div.textMenuNav').css('transform', 'translateY(100%)') : 0;
+                setTimeout(() => {
+                    $('#middleButtonMenu').is(':visible') ? $('#futur div.numberBeforeNav, #futur div.textMenuNav').css('transform', 'translateY(100%)') : 0;
+                    setTimeout(() => {
+                        $('#middleButtonMenu').is(':visible') ? $('#experience div.numberBeforeNav, #experience div.textMenuNav').css('transform', 'translateY(100%)') : 0;
+                        setTimeout(() => {
+                            $('#middleButtonMenu').is(':visible') ? $('#projets div.numberBeforeNav, #projets div.textMenuNav').css('transform', 'translateY(100%)') : 0;
+                            setTimeout(() => {
+                                $('#middleButtonMenu').is(':visible') ? $('#about div.numberBeforeNav, #about div.textMenuNav').css('transform', 'translateY(100%)') : 0;
+                                setTimeout(() => {
+                                    $('#middleButtonMenu').is(':visible') ? $('#accueil div.numberBeforeNav, #accueil div.textMenuNav').css('transform', 'translateY(100%)') : 0;
+                                }, 100);
+                            }, 100);
+                        }, 100);
+                    }, 100);
+                }, 100);
+            }, 101);
+            break;
+        default:
+            break;
+    }
 }

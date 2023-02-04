@@ -49,6 +49,7 @@ nav#navigation {
     align-items: center;
     flex-direction: row;
     flex-wrap: wrap;
+    z-index: 9;  // 1 niveau en dessous de la barre de navigation
 
     position: fixed;
 
@@ -70,10 +71,13 @@ nav#navigation {
 
     &>div>div {
         display: flex;
+        overflow: hidden;
         cursor: pointer;
+
         font-size: 3.5rem;
-        margin-top: 10%;
-        margin-bottom: 10%;
+
+        margin-top: 5vh;
+        margin-bottom: 5vh;
     }
 
     &>div:first-child {
@@ -85,19 +89,24 @@ nav#navigation {
         display: flex;
         flex-direction: column-reverse;
         margin-right: 0.7rem;
+        margin-bottom: 0.3rem;
+        
+        transform: translateY(100%);
+        overflow: hidden;
 
         font-size: 1.3rem;
         color: var(--color-navigation);
     }
 
     &>div>div>div.textMenuNav {
-        height: 3.8rem;
+        height: 4.1rem;
         overflow: hidden;
-        transform: rotate(0deg);
-        transition: all 0.5s ease;
+        transform: translateY(100%);
 
+        transition: all 0.5s ease;
+        
         &>div {
-            transform: rotate(0deg);
+
             transition: all 0.5s ease;
         }
         &>div:last-child {
@@ -106,9 +115,6 @@ nav#navigation {
     }
 
     &>div>div:hover {
-        // &>div.textMenuNav>div {
-        //     transform: translateY(-100%);
-        // }
         &>div.textMenuNav>div:first-child {
             transform: translateY(-100%);
         }
@@ -136,7 +142,7 @@ div#navigationGlob {
     align-items: center;
 
     position: fixed;
-    z-index: 10;
+    z-index: 10; // meme niveau que la barre de navigation
     width: 100%;
     height: var(--height-nav);
     padding-left: 5rem;
@@ -254,7 +260,7 @@ div#buttonMenu {
     flex-direction: column;
     position: fixed;
     right: 5rem;
-    z-index: 10;
+    z-index: 10; // meme niveau que la barre de navigation
     cursor: pointer;
 
     width: 3rem;
